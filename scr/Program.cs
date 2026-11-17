@@ -1,3 +1,10 @@
+/******************************************************************************
+
+                            Online C# Compiler.
+                Code, Compile, Run and Debug C# program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
 using System;
 
 class Program
@@ -10,10 +17,14 @@ class Program
         int seeds = 5;
         int crops = 0;
         int day = 1;
-        string playerName;
+        string playerName = "";
+        string play;
+        int enterName = 0;
 
         bool gameOver = false;
-
+        bool playAgain = false;
+        
+        do {
         Console.WriteLine("==================================");
         Console.WriteLine("       RANDOM FARM SURVIVAL");
         Console.WriteLine("==================================");
@@ -32,9 +43,12 @@ class Program
         Console.WriteLine("Receiving a seed: 15%");
         Console.WriteLine("Pests: 15%");
         Console.WriteLine();
-
-        Console.Write("Enter your name: ");
-        playerName = Console.ReadLine();
+        
+        if (enterName == 0)
+        {
+            Console.Write("Enter your name: ");
+            playerName = Console.ReadLine();
+        }
 
         Console.WriteLine();
         Console.WriteLine("Welcome, " + playerName + "!");
@@ -128,17 +142,17 @@ class Program
                             coins = coins - 10;
                             crops++;
 
-                            Console.WriteLine("You planted a seed!");
-                            Console.WriteLine("Your crop will be ready to harvest.");
+                            Console.WriteLine("\nYou planted a seed!");
+                            Console.WriteLine("\nYour crop will be ready to harvest.");
                             actionDone = true;
                         }
                         else if (seeds == 0)
                         {
-                            Console.WriteLine("You have no seeds!");
+                            Console.WriteLine("\nYou have no seeds!");
                         }
                         else
                         {
-                            Console.WriteLine("You need at least 10 coins!");
+                            Console.WriteLine("\nYou need at least 10 coins!");
                         }
                     }
                     else if (action == 2)
@@ -157,12 +171,12 @@ class Program
                         }
                         else
                         {
-                            Console.WriteLine("You have no crops to harvest!");
+                            Console.WriteLine("\nYou have no crops to harvest!");
                         }
                     }
                     else
                     {
-                        Console.WriteLine("You rested for the day.");
+                        Console.WriteLine("\nYou rested for the day.");
                         actionDone = true;
                     }
                 }
@@ -211,8 +225,28 @@ class Program
             Console.WriteLine("You Lose!");
             Console.WriteLine("You did not meet the winning goal.");
         }
-
+        
+        Console.Write("\nPlay Again (y/n)? ");
+        play = Console.ReadLine().ToUpper();
+        
+        if (play == "Y")
+        {
+            playAgain = true;
+            coins = 50;
+            seeds = 5;
+            crops = 0;
+            day = 1;
+            enterName++;
+        }
+        else
+        {
+            playAgain = false;
+        }
+        
         Console.WriteLine();
+        
+        } while (playAgain == true);
+        
         Console.WriteLine("Thanks for playing!");
         Console.WriteLine("\n--------------------------------- ");
         Console.WriteLine("Credits to:");
@@ -220,4 +254,10 @@ class Program
         Console.WriteLine("Jey");
         Console.WriteLine("Rynol");
     }
+}
+using System;
+class HelloWorld {
+  static void Main() {
+    Console.WriteLine("Hello World");
+  }
 }
